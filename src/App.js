@@ -1,10 +1,26 @@
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import "./App.css";
+import Contact from "./components/Contact";
+import Home from "./components/Home";
+import NotFound from "./components/NotFound";
+import ProductDetails from "./components/Product/ProductDetails";
+import ProductListing from "./components/Product/ProductListing";
+import Footer from "./components/SharedPage/Footer";
+import Navbar from "./components/SharedPage/Navbar";
 
 function App() {
   return (
-    <div className="App">
-      <h1 className='text-blue-600 font-bold text-5xl'>Welcome To Fc Shop</h1>
-    </div>
+    <>
+    <Navbar/>
+      <Routes>
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/" element={<ProductListing/>} />
+          <Route path="/product/:productId" element={<ProductDetails/>} />
+        {/* <Route path="contact" element={<Contact />} /> */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer/>
+    </>
   );
 }
 
